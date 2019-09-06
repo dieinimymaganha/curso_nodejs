@@ -1,10 +1,11 @@
 console.log('n-fatorial')
 
-console.log('Executando o script a partir do diretório ${process.cwd()}')
+/*console.log('Executando o script a partir do diretório ${process.cwd()}')
 
 process.on('exit', () =>{
   console.log('Script está proximo a terminar')
-})
+})*/
+
 const fatorial = (num)=>{
     if(num === 0) {
         return 1
@@ -12,6 +13,6 @@ const fatorial = (num)=>{
     return num * fatorial (num - 1)
 }
 
-console.log(process.argv)
+const num = parseInt(process.argv[2])
 
-console.log("O fatorial de 5 é igual a ${fatoriral(5)}")
+console.log("O fatorial de ${num} é igual a ${fatoriral(num)}")
