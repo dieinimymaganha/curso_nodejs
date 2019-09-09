@@ -13,6 +13,7 @@
     "yargs": "^14.0.0"
   },
   "devDependencies": {
-    "@types/node": "^12.7.4"
+    "@types/node": "^12.7.4",
+    "@types/yargs": "^13.0.2"
   }
 }
