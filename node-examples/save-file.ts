@@ -1,5 +1,7 @@
-const fs = require('fs')
-const argv = require('yargs')
+import * as fs from 'fs'
+import * as yargs from 'yargs'
+
+const argv = yargs
     .alias('f', 'filename')
     .alias('c', 'content')
     .demandOption('filename')
