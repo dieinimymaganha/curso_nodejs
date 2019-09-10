@@ -45,7 +45,7 @@ class UsersRouter extends router_1.Router {
         });
         application.patch('/users/:id', (req, resp, next) => {
             const options = { new: true };
-            users_model_1.User.findByIdAndUpdate(req.params.id, req.body).then(user => {
+            users_model_1.User.findByIdAndUpdate(req.params.id, req.body, options).then(user => {
                 if (user) {
                     resp.json(user);
                     return next();
