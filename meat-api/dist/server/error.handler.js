@@ -6,5 +6,15 @@ exports.handleError = (req, resp, err, done) => {
             message: err.message
         };
     };
+    switch (err.name) {
+        case 'MongoError':
+            if (err.code === 11000) {
+                err.statusCode = 400;
+            }
+            break;
+        case 'ValidationError':
+            err.statusCode = 400;
+            break;
+    }
     done();
 };
