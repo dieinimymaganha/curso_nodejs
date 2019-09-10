@@ -9,7 +9,8 @@ const userSchema = new mongoose.Schema({
     unique: true
   },
   password: {
-    type: String
+    type: String,
+    select: false
   }
 })
 export const User = mongoose.model('User', userSchema)
