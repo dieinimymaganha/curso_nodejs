@@ -5,6 +5,7 @@ const mongoose = require("mongoose");
 const enviroment_1 = require("../common/enviroment");
 class Server {
     initializeDb() {
+        mongoose.Promise = global.Promise;
         return mongoose.connect(enviroment_1.enviroment.db.url, {
             useMongoClient: true
         });
