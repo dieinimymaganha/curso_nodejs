@@ -47,7 +47,7 @@ class UsersRouter extends Router{
     })
 
     application.patch('/users/:id', (req, resp, next)=>{
-      const options = {runValidators: true, new : true}
+      const options = {new : true}
       User.findByIdAndUpdate(req.params.id, req.body, options)
           .then(this.render(resp, next))
           .catch(next)
