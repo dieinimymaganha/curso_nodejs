@@ -8,6 +8,13 @@ export abstract class ModelRouter<D extends mongoose.Document
     super()
   }
 
+  validateId = (req, resp, next)=>{
+    if(!mongoose.Types.ObjectId.isValid(req.params.id)){
+      next(new NotFoundError('Document not found'))
+    }else{
+      next()
+    }
+  }
   findAll = (req, resp, next)=>{
     this.model.find()
         .then(this.renderAll(resp, next))
