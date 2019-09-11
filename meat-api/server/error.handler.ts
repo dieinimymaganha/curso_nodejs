@@ -19,7 +19,7 @@ export const handleError = (req: restify.Request, resp: restify.Response, err, d
       err.statusCode = 400
       const messages: any[] = []
       for(let name in err.errors){
-        messages.push({message: err.erros[name].message})
+        messages.push({message: err.errors[name].message})
       }
       err.toJSON = ()=>({
         errors: messages

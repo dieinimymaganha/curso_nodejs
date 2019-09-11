@@ -17,7 +17,7 @@ exports.handleError = (req, resp, err, done) => {
             err.statusCode = 400;
             const messages = [];
             for (let name in err.errors) {
-                messages.push({ message: err.erros[name].message });
+                messages.push({ message: err.errors[name].message });
             }
             err.toJSON = () => ({
                 errors: messages
