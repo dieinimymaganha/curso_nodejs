@@ -52,7 +52,7 @@ class UsersRouter extends router_1.Router {
                     resp.send(204);
                 }
                 else {
-                    throw new restify_errors_1.NotFoundError('Documento não encontrado);
+                    throw new restify_errors_1.NotFoundError('Documento não encontrado');
                 }
                 return next();
             }).catch(next);

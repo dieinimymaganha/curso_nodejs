@@ -58,7 +58,7 @@ class UsersRouter extends Router{
         if(cmdResult.result.n){
           resp.send(204)
         }else{
-          throw new NotFoundError('Documento não encontrado
+          throw new NotFoundError('Documento não encontrado')
         }
         return next()
       }).catch(next)
