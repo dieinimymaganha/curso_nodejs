@@ -43,31 +43,34 @@ const userSchema = new mongoose.Schema({
 
 })
 
-userSchema.pre('save', function (next) {
-    const user : User = this
+const hashPassword = (obj, next)=>{
+  bcrypt.hash(obj.password, enviroment.security.saltRounds)
+        .then(hash =>{
+          obj.password = hash
+          next()
+        }).catch(next)
+}
+
+const saveMiddledware = function (next) {
+    const user: User =this
     if(!user.isModified('password')){
       next()
     }else{
-      bcrypt.hash(user.password, enviroment.security.saltRounds)
-            .then(hash =>{
-              user.password = hash
-              next()
-            }).catch(next)
+      hashPassword(user, next)
     }
-})
+}
 
-userSchema.pre('findOneAndUpdate', function (next) {
+const updateMiddleware = function (next) {
+    const user: User =this
     if(!this.getUpdate().password){
       next()
     }else{
-      bcrypt.hash(this.getUpdate().password, enviroment.security.saltRounds)
-            .then(hash =>{
-              this.getUpdate().password = hash
-              next()
-            }).catch(next)
+      hashPassword(this.getUpdate(), next)
     }
-})
+}
 
-
+userSchema.pre('save', saveMiddledware)
+userSchema.pre('findOneAndUpdate', updateMiddleware)
+userSchema.pre('update', updateMiddleware)
 
 export const User = mongoose.model<User>('User', userSchema)
