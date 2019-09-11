@@ -49,4 +49,16 @@ userSchema.pre('save', function (next) {
         }).catch(next);
     }
 });
+userSchema.pre('findOneAndUpdate', function (next) {
+    if (!this.getUpdate().password) {
+        next();
+    }
+    else {
+        bcrypt.hash(this.getUpdate().password, enviroment_1.enviroment.security.saltRounds)
+            .then(hash => {
+            this.getUpdate().password = hash;
+            next();
+        }).catch(next);
+    }
+});
 exports.User = mongoose.model('User', userSchema);
