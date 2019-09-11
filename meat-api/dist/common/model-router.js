@@ -8,7 +8,7 @@ class ModelRouter extends router_1.Router {
         this.model = model;
         this.findAll = (req, resp, next) => {
             this.model.find()
-                .then(this.render(resp, next))
+                .then(this.renderAll(resp, next))
                 .catch(next);
         };
         this.findById = (req, resp, next) => {
