@@ -5,6 +5,13 @@ const reviews_model_1 = require("./reviews.model");
 class ReviewsRouter extends model_router_1.ModelRouter {
     constructor() {
         super(reviews_model_1.Review);
+        this.findById = (req, resp, next) => {
+            this.model.findById(req.params.id)
+                .populate('user', ' name')
+                .populate('restaurant')
+                .then(this.render(resp, next))
+                .catch(next);
+        };
     }
     applyRouters(application) {
         application.get('/reviews', this.findAll);
