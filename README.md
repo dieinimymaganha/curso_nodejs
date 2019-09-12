@@ -1,5 +1,5 @@
 # curso_nodejs
-Códigos de nodejs realizados durante o curso
+### Processo realizado para fazer as devidas instalações e problemas que ocorreram durante o curso
 
 Primeiro instalar o nvm 
 
