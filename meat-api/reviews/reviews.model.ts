@@ -12,7 +12,7 @@ export interface Review extends mongoose.Document {
 }
 
 const reviwSchema = new mongoose.Schema({
-  data:{
+  date:{
     type: Date,
     required: true
   },

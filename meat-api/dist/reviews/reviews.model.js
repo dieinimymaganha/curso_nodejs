@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose = require("mongoose");
 const reviwSchema = new mongoose.Schema({
-    data: {
+    date: {
         type: Date,
         required: true
     },
