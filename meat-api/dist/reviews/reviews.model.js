@@ -26,4 +26,4 @@ const reviwSchema = new mongoose.Schema({
         required: true
     }
 });
-const Review = mongoose.model('Review', reviwSchema);
+exports.Review = mongoose.model('Review', reviwSchema);

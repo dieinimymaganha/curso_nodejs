@@ -38,4 +38,4 @@ const reviwSchema = new mongoose.Schema({
 })
 
 
-const Review = mongoose.model<Review>('Review', reviwSchema)
+export const Review = mongoose.model<Review>('Review', reviwSchema)
