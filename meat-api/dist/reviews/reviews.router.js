@@ -8,7 +8,7 @@ class ReviewsRouter extends model_router_1.ModelRouter {
         this.findById = (req, resp, next) => {
             this.model.findById(req.params.id)
                 .populate('user', ' name')
-                .populate('restaurant')
+                .populate('restaurant', 'name')
                 .then(this.render(resp, next))
                 .catch(next);
         };
