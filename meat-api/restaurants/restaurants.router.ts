@@ -18,3 +18,5 @@ class RestaurantsRouter extends ModelRouter<Restaurant> {
     }
 
 }
+
+export const restaurantsRouter = new RestaurantsRouter()

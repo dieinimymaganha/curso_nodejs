@@ -15,3 +15,4 @@ class RestaurantsRouter extends model_router_1.ModelRouter {
         application.del('/restaurants/:id', [this.validateId, this.delete]);
     }
 }
+exports.restaurantsRouter = new RestaurantsRouter();
