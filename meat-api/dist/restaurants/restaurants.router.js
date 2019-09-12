@@ -1,10 +1,22 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const model_router_1 = require("../common/model-router");
+const restify_errors_1 = require("restify-errors");
 const restaurants_model_1 = require("./restaurants.model");
 class RestaurantsRouter extends model_router_1.ModelRouter {
     constructor() {
         super(restaurants_model_1.Restaurant);
+        this.findMenu = (req, resp, next) => {
+            restaurants_model_1.Restaurant.findById(req.paramas.id, "+menu").then(rest => {
+                if (!rest) {
+                    throw new restify_errors_1.NotFoundError('Restaurant not found');
+                }
+                else {
+                    resp.json(rest.menu);
+                    return next();
+                }
+            }).catch(next);
+        };
     }
     applyRouters(application) {
         application.get('/restaurants', this.findAll);
