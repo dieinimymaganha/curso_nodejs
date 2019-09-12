@@ -7,7 +7,7 @@ class RestaurantsRouter extends model_router_1.ModelRouter {
     constructor() {
         super(restaurants_model_1.Restaurant);
         this.findMenu = (req, resp, next) => {
-            restaurants_model_1.Restaurant.findById(req.paramas.id, "+menu").then(rest => {
+            restaurants_model_1.Restaurant.findById(req.params.id, "+menu").then(rest => {
                 if (!rest) {
                     throw new restify_errors_1.NotFoundError('Restaurant not found');
                 }
@@ -15,6 +15,20 @@ class RestaurantsRouter extends model_router_1.ModelRouter {
                     resp.json(rest.menu);
                     return next();
                 }
+            }).catch(next);
+        };
+        this.replaceMenu = (req, resp, next) => {
+            restaurants_model_1.Restaurant.findById(req.params.id).then(rest => {
+                if (!rest) {
+                    throw new restify_errors_1.NotFoundError('Restaurant not found');
+                }
+                else {
+                    rest.menu = req.body; //Array de MenuItem
+                    return rest.save();
+                }
+            }).then(rest => {
+                resp.json(rest.menu);
+                return next();
             }).catch(next);
         };
     }
@@ -25,6 +39,8 @@ class RestaurantsRouter extends model_router_1.ModelRouter {
         application.put('/restaurants/:id', [this.validateId, this.replace]);
         application.patch('/restaurants/:id', [this.validateId, this.update]);
         application.del('/restaurants/:id', [this.validateId, this.delete]);
+        application.get('/restaurants/:id/menu', [this.validateId, this.findMenu]);
+        application.put('/restaurants/:id/menu', [this.validateId, this.replaceMenu]);
     }
 }
 exports.restaurantsRouter = new RestaurantsRouter();
