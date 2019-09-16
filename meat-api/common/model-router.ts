@@ -25,18 +25,21 @@ export abstract class ModelRouter<D extends mongoose.Document> extends Router{
   envelopeAll(documents: any[], options: any = {}): any{
     const resource: any = {
       _links:{
-        self:``
+        self:`${options.url}`
       },
       items: documents
     }
-    if(options.page){
+    if(options.page && options.count && options.pageSize){
       if(options.page > 1){
         resource._links.previous = `${this.basePath}?_page=${options.page-1}`
       }
+      const remaining = options.count - (options.page * options.pageSize)
+      if(remaining > 0){
       resource._links.previous = `${this.basePath}?_page=${options.page+1}`
     }
     return resource
   }
+}
 
 
   validateId = (req, resp, next)=>{
@@ -53,11 +56,15 @@ export abstract class ModelRouter<D extends mongoose.Document> extends Router{
 
     const skip = (page - 1) * this.pageSize
 
-    this.model.find()
-        .skip(skip)
-        .limit(this.pageSize)
-        .then(this.renderAll(resp, next, {page}))
-        .catch(next)
+    this.model
+        .count({}).exec()
+        .then(count => (this.model.find()
+          .skip(skip)
+          .limit(this.pageSize)
+          .then(this.renderAll(resp, next, {page,
+                count, pageSize: this.pageSize, url: req.url
+              }))
+          .catch(next)))
   }
 
   findById = (req, resp, next)=>{
