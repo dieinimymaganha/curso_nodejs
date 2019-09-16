@@ -99,5 +99,5 @@ Instalando o types bcrypt: `sudo npm i @types/bcrypt@1.0.0 -D –E`
 *Comando para instalar as dependência:* 
 `sudo npm i jest@22.4.2 ts-jest@22.0.4 typescript@2.6.2 supertest@3.0.0 @types/jest@22.1.2 @types/supertest@2.0.4 -D -E`
 
-** Além da instalação das bibliotecas né necessário fazer uma pequena configuração **
+**Além da instalação das bibliotecas né necessário fazer uma pequena configuração**
 [Clique aqui](https://github.com/dieinimymaganha/curso_nodejs/commit/8a202b84513cc8d95e14fb85cbcbce5f3bef89b4)
