@@ -22,6 +22,22 @@ export abstract class ModelRouter<D extends mongoose.Document> extends Router{
     return resource
   }
 
+  envelopeAll(documents: any[], options: any = {}): any{
+    const resource: any = {
+      _links:{
+        self:``
+      },
+      items: documents
+    }
+    if(options.page){
+      if(options.page > 1){
+        resource._links.previous = `${this.basePath}?_page=${options.page-1}`
+      }
+      resource._links.previous = `${this.basePath}?_page=${options.page+1}`
+    }
+    return resource
+  }
+
 
   validateId = (req, resp, next)=>{
     if(!mongoose.Types.ObjectId.isValid(req.params.id)){
@@ -30,6 +46,7 @@ export abstract class ModelRouter<D extends mongoose.Document> extends Router{
       next()
     }
   }
+
   findAll = (req, resp, next)=>{
     let page = parseInt(req.query._page || 1)
     page = page > 0 ? page: 1
@@ -39,7 +56,7 @@ export abstract class ModelRouter<D extends mongoose.Document> extends Router{
     this.model.find()
         .skip(skip)
         .limit(this.pageSize)
-        .then(this.renderAll(resp, next))
+        .then(this.renderAll(resp, next, {page}))
         .catch(next)
   }
 

@@ -23,7 +23,7 @@ class ModelRouter extends router_1.Router {
             this.model.find()
                 .skip(skip)
                 .limit(this.pageSize)
-                .then(this.renderAll(resp, next))
+                .then(this.renderAll(resp, next, { page }))
                 .catch(next);
         };
         this.findById = (req, resp, next) => {
@@ -75,6 +75,21 @@ class ModelRouter extends router_1.Router {
     envelope(document) {
         let resource = Object.assign({ _links: {} }, document.toJSON());
         resource._links.self = `${this.basePath}/${resource._id}`;
+        return resource;
+    }
+    envelopeAll(documents, options = {}) {
+        const resource = {
+            _links: {
+                self: ``
+            },
+            items: documents
+        };
+        if (options.page) {
+            if (options.page > 1) {
+                resource._links.previous = `${this.basePath}?_page=${options.page - 1}`;
+            }
+            resource._links.previous = `${this.basePath}?_page=${options.page + 1}`;
+        }
         return resource;
     }
 }
