@@ -6,5 +6,6 @@ test('get /users', () =>{
     .get('/users')
     .then(response=>{
       expect(response.status).toBe(200)
+      expect(response.body.items).toBeInstanceOf(Array)
     }).catch(fail)
 })
