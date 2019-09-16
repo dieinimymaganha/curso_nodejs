@@ -101,3 +101,5 @@ Instalando o types bcrypt: `sudo npm i @types/bcrypt@1.0.0 -D –E`
 
 **Além da instalação das bibliotecas né necessário fazer uma pequena configuração**
 [Clique aqui](https://github.com/dieinimymaganha/curso_nodejs/commit/8a202b84513cc8d95e14fb85cbcbce5f3bef89b4)
+
+*Para executar um teste basta passar o comando:* `npm test`
