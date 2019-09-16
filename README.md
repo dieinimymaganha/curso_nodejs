@@ -92,3 +92,4 @@ Instalando o bcrypt: `sudo npm i bcrypt@1.0.3 -P –E`
 Instalando o types bcrypt: `sudo npm i @types/bcrypt@1.0.0 -D –E`
 
 ***Após a implementação da criptografia deu problema na execução, depois de muito tentar eu apaguei todos os modulos e instalei novamente `“npm install”`, ele pega todos os pacotes do package.json e faz a instalação automaticamente. Mesmo assim deu erro então usei o comando npm rebuild bcrypt --build-from-source e voltou a funcionar.***
+
