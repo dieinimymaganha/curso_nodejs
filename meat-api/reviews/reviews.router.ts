@@ -11,7 +11,7 @@ class ReviewsRouter extends ModelRouter<Review>{
 
   envelope(document){
     let resource = super.envelope(document)
-    resource._links.restaurant = `${this.basePath}/${resource._id}/restaurant`
+    resource._links.restaurant = `/restaurant/${resource._id}/restaurant`
     return resource
   }
 
