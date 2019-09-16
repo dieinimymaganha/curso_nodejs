@@ -91,5 +91,11 @@ Instalando o bcrypt: `sudo npm i bcrypt@1.0.3 -P –E`
 
 Instalando o types bcrypt: `sudo npm i @types/bcrypt@1.0.0 -D –E`
 
-***Após a implementação da criptografia deu problema na execução, depois de muito tentar eu apaguei todos os modulos e instalei novamente `“npm install”`, ele pega todos os pacotes do package.json e faz a instalação automaticamente. Mesmo assim deu erro então usei o comando npm rebuild bcrypt --build-from-source e voltou a funcionar.***
+***Após a implementação da criptografia deu problema na execução, depois de muito tentar eu apaguei todos os modulos e instalei novamente `“npm install”`, ele pega todos os pacotes do package.json e faz a instalação automaticamente. Mesmo assim deu erro então usei o comando `npm rebuild bcrypt --build-from-source` e voltou a funcionar.***
 
+# Iniciando testes
+> Instalando as bibliotecas de testes 
+*Comando para instalar as dependência:* `sudo npm i jest@22.4.2 ts-jest@22.0.4 typescript@2.6.2 supertest@3.0.0 @types/jest@22.1.2 @types/supertest@2.0.4 -D -E`
+
+** Além da instalação das bibliotecas né necessário fazer uma pequena configuração **
+[Clique aqui](https://github.com/dieinimymaganha/curso_nodejs/commit/8a202b84513cc8d95e14fb85cbcbce5f3bef89b4)
