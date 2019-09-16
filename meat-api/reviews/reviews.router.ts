@@ -9,6 +9,12 @@ class ReviewsRouter extends ModelRouter<Review>{
     super(Review)
   }
 
+  envelope(document){
+    let resource = super.envelope(document)
+    resource._links.restaurant = `${this.basePath}/${resource._id}/restaurant`
+    return resource
+  }
+
   protected prepareOne(query: mongoose.DocumentQuery<Review,Review>):mongoose.DocumentQuery<Review,Review>{
     return query.populate('user', 'name')
                 .populate('restaurant', 'name')
