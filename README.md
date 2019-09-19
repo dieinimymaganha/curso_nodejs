@@ -60,6 +60,7 @@ Ao executar o comando é criado um arquivo json chamando package, com as seguint
 ```
  
 Instalando o yargs para pegar melhor os argumentos, até agora estamos utilizando o process.argv[], para isso use o comando:
+
 `npm install yargs --save`
 
 
@@ -122,7 +123,7 @@ Comando para instalar as dependência dos testes:
 `npm test`
 
 
-*Instalando pacote para testes: *
+*Instalando pacote para testes:*
 `sudo npm i ts-node@5.0.1 jest-cli@22.4.2 -D -E`*
 
 Instalando as dependencias para token:
