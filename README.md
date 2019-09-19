@@ -89,9 +89,13 @@ Instalando o types restify-errors : `sudo npm i @types/restify-errors@4.3.2 -D -
 
 Instalando o bcrypt: `sudo npm i bcrypt@1.0.3 -P –E`
 
+
+`sudo npm i bcrypt -P`
+`sudo npm install @types/bcrypt -D –E`
+
 Instalando o types bcrypt: `sudo npm i @types/bcrypt@1.0.0 -D –E`
 
-***Após a implementação da criptografia deu problema na execução, depois de muito tentar eu apaguei todos os modulos e instalei novamente `“npm install”`, ele pega todos os pacotes do package.json e faz a instalação automaticamente. Mesmo assim deu erro então usei o comando `npm rebuild bcrypt --build-from-source` e voltou a funcionar.***
+***Após a implementação da criptografia deu problema na execução, depois de muito tentar eu apaguei todos os modulos e instalei novamente*** `“npm install”`, ***ele pega todos os pacotes do package.json e faz a instalação automaticamente. Mesmo assim deu erro então usei o comando*** `sudo npm rebuild bcrypt --build-from-source` ***e voltou a funcionar.***
 
 # Iniciando testes
 > Instalando as bibliotecas de testes
@@ -103,3 +107,6 @@ Instalando o types bcrypt: `sudo npm i @types/bcrypt@1.0.0 -D –E`
 [Clique aqui](https://github.com/dieinimymaganha/curso_nodejs/commit/8a202b84513cc8d95e14fb85cbcbce5f3bef89b4)
 
 *Para executar um teste basta passar o comando:* `npm test`
+
+
+*Instalando pacote para testes: * `sudo npm i ts-node@5.0.1 jest-cli@22.4.2 -D -E`
