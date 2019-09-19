@@ -5,19 +5,7 @@ import {enviroment}  from '../common/enviroment'
 import {usersRouter} from './users.router'
 import {User} from './users.model'
 
-let address: string
-let server: Server
-
-beforeAll(() => {
-  enviroment.db.url = process.env.DB_URL || 'mongodb://localhost/meat-api-test-db'
-  enviroment.server.port = process.env.SERVER_PORT || 3001
-  address = `http://localhost:${enviroment.server.port}`
-  server = new Server()
-  return server.bootstrap([usersRouter])
-               .then(() => User.remove({}).exec())
-               .catch(console.error)
-})
-
+let address: string = 'http://localhost:3001'
 
 test('post / users', () => {
   return request(address)
@@ -79,10 +67,4 @@ test('path /users/:id', () =>{
     expect(response.body.password).toBeUndefined()
   })
   .catch(fail)
-})
-
-
-
-afterAll(() =>{
-  return server.shutdown()
 })
