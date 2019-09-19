@@ -109,4 +109,9 @@ Instalando o types bcrypt: `sudo npm i @types/bcrypt@1.0.0 -D –E`
 *Para executar um teste basta passar o comando:* `npm test`
 
 
-*Instalando pacote para testes: * `sudo npm i ts-node@5.0.1 jest-cli@22.4.2 -D -E`
+*Instalando pacote para testes: * `sudo npm i ts-node@5.0.1 jest-cli@22.4.2 -D -E`*
+
+Instalando as dependencias para token:
+
+`sudo npm i jsonwebtoken@8.1.1 -P -E`
+`sudo npm i @types/jsonwebtoken@7.2.5 -D -E`
