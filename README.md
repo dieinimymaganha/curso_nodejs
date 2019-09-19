@@ -115,3 +115,8 @@ Instalando as dependencias para token:
 
 `sudo npm i jsonwebtoken@8.1.1 -P -E`
 `sudo npm i @types/jsonwebtoken@7.2.5 -D -E`
+
+
+> Verificação dos dados gerados pelo token.
+
+Basta acessar o site [jwt](https://jwt.io) e colar o token gerado pelo metodo post.
