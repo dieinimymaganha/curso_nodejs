@@ -3,7 +3,7 @@ import * as restify from 'restify'
 import {NotFoundError} from 'restify-errors'
 import {User} from './users.model'
 import {authenticate} from '../security/auth.handler'
-
+import {authorize} from '../security/authz.handler'
 
 class UsersRouter extends ModelRouter<User>{
 
@@ -30,7 +30,10 @@ class UsersRouter extends ModelRouter<User>{
 
   applyRouters(application: restify.Server){
 
-    application.get({path:`${this.basePath}`, version:'2.0.0'}, [this.findByEmail,this.findAll])
+    application.get({path:`${this.basePath}`, version:'2.0.0'}, [
+      authorize('admin'),
+      this.findByEmail,
+      this.findAll])
     application.get({path:`${this.basePath}`, version:'1.0.0'}, this.findAll)
     application.get(`${this.basePath}/:id`, [this.validateId, this.findById])
     application.post(`${this.basePath}`, this.save)
