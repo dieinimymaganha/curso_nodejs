@@ -5,11 +5,13 @@ import {enviroment}  from '../common/enviroment'
 import {usersRouter} from './users.router'
 import {User} from './users.model'
 
-let address: string = 'http://localhost:3001'
+const address: string = (<any>global).address
+const auth: string = (<any>global).auth
 
 test('post / users', () => {
   return request(address)
   .post('/users')
+  .set('Authorization', auth)
   .send({
     name: 'usuario1',
     email: 'usuario@email.com',
@@ -31,6 +33,7 @@ test('post / users', () => {
 test('get /users', () =>{
   return request(address)
     .get('/users')
+    .set('Authorization', auth)
     .then(response=>{
       expect(response.status).toBe(200)
       expect(response.body.items).toBeInstanceOf(Array)
@@ -41,6 +44,7 @@ test('get /users', () =>{
 test('get /users/aaaa - not found', () => {
   return request(address)
       .get('/users/aaaa')
+      .set('Authorization', auth)
       .then(response =>{
         expect(response.status).toBe(404)
       }).catch(fail)
@@ -49,6 +53,7 @@ test('get /users/aaaa - not found', () => {
 test('path /users/:id', () =>{
   return request(address)
   .post('/users')
+  .set('Authorization', auth)
   .send({
     name: 'usuario2',
     email: 'usuario2@email.com',

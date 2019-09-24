@@ -3,11 +3,13 @@ import * as request from 'request'
 import {enviroment} from '../common/enviroment'
 
 
-let address: string = 'http://localhost:3001'
+const address: string = (<any>global).address
+const auth: string = (<any>global).auth
 
 test('get /review', () =>{
   return request(address)
         .get('/reviews')
+        .set('Authorization', auth)
         .then(response =>{
           expect(response.status).toBe(200)
           expect(response.body.items).toBeInstanceOf(Array)
