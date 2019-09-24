@@ -2,8 +2,8 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.enviroment = {
     server: { port: process.env.SERVER_PORT || 3000 },
-    // db : {url: process.env.DB_URL || 'mongodb://localhost/meat-api'},
-    db: { url: process.env.DB_URL || "mongodb+srv://dieinimy:M0du10gp5@cluster0-pqen6.mongodb.net/test?retryWrites=true&w=majority" },
+    db: { url: process.env.DB_URL || 'mongodb://localhost/meat-api' },
+    // db : {url: process.env.DB_URL || "mongodb+srv://dieinimy:M0du10gp5@cluster0-pqen6.mongodb.net/test?retryWrites=true&w=majority"},
     security: {
         saltRounds: process.env.SALT_ROUNDS || 10,
         apiSecret: process.env.API_SCRET || 'meat-api-scret',
