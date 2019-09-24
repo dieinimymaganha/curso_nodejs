@@ -153,3 +153,13 @@ Instalando as dependencias para token:
 > Verificação dos dados gerados pelo token.
 
 Basta acessar o site [jwt](https://jwt.io) e colar o token gerado pelo metodo post.
+
+Instalando o pacote pm2: 
+
+`npm i pm2 -g`
+
+
+Iniciando a aplicação com pm2
+
+`pm2 start index.js`
+
