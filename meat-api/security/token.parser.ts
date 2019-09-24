@@ -35,9 +35,10 @@ function applyBearer(req: restify.Request, next): (error, decoded) => void {
           //associar o usuário no Request
           req.authenticated = user
         }
-      })
+        next()
+      }).catch(next)
     }else{
-
+      next()
     }
   }
 

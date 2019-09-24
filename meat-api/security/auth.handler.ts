@@ -13,7 +13,7 @@ export const authenticate: restify.RequestHandler = (req, resp, next) =>{
           //gerar o token
           // 3rd
           const token = jwt.sign({sub: user.email, iss: 'meat-api'},
-          enviroment.security.apiSecret)
+                        enviroment.security.apiSecret)
           resp.json({name: user.name, email: user.email, acessToken: token})
           return next(false)
         }else{
